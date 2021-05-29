@@ -41,16 +41,10 @@ public class AddressZad1Definition {
 
     @When("^jestem na stronie z kafelkiem Address$")
     public void jestemNaStronieZKafelkiemAddress() {
-        // Skonfiguruj sterownik przeglądarki
-    //   System.setProperty("webdriver.chrome.driver",
-     //           "src/main/resources/chromedriver.exe");
-    //    driver = new ChromeDriver();
-    //    driver.get("https://prod-kurs.coderslab.pl/index.php?controller=addresses");
-     //   WebElement element_new_address = driver.findElement(By.cssSelector("a:nth-child(1)"));
-     //   WebElement element_new_address = driver.findElement(By.cssSelector("#block_myaccount_infos:nth-child(3)"));
-        WebElement element_new_address = driver.findElement(By.cssSelector("a[href^=\"addresses\"]"));
+        WebElement element_new_address = driver.findElement(By.xpath("/html/body/main/footer/div[2]/div/div[1]/div[2]/ul/li[4]/a"));
         element_new_address.click();
-    //    element_new_address.click();
+        WebElement createNewAddress = driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div[2]/a/i"));
+        createNewAddress.click();
     }
 
     @Then("^wypelniam formularz <alias> <address> <city> <zip/postal> <code> <country> <phone>$")
