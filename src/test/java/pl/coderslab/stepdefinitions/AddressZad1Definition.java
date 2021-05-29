@@ -42,12 +42,14 @@ public class AddressZad1Definition {
     @When("^jestem na stronie z kafelkiem Address$")
     public void jestemNaStronieZKafelkiemAddress() {
         // Skonfiguruj sterownik przeglądarki
-        System.setProperty("webdriver.chrome.driver",
-                "src/main/resources/chromedriver.exe");
-        driver = new ChromeDriver();
-
-        driver.get("https://prod-kurs.coderslab.pl/index.php?controller=addresses");
-    //    WebElement element_new_address = driver.findElement(By.xpath("//a"));
+    //   System.setProperty("webdriver.chrome.driver",
+     //           "src/main/resources/chromedriver.exe");
+    //    driver = new ChromeDriver();
+    //    driver.get("https://prod-kurs.coderslab.pl/index.php?controller=addresses");
+     //   WebElement element_new_address = driver.findElement(By.cssSelector("a:nth-child(1)"));
+     //   WebElement element_new_address = driver.findElement(By.cssSelector("#block_myaccount_infos:nth-child(3)"));
+        WebElement element_new_address = driver.findElement(By.cssSelector("a:nth-child(3)ul.fancy"));
+        element_new_address.click();
     //    element_new_address.click();
     }
 
