@@ -48,7 +48,7 @@ public class AddressZad1Definition {
     //    driver.get("https://prod-kurs.coderslab.pl/index.php?controller=addresses");
      //   WebElement element_new_address = driver.findElement(By.cssSelector("a:nth-child(1)"));
      //   WebElement element_new_address = driver.findElement(By.cssSelector("#block_myaccount_infos:nth-child(3)"));
-        WebElement element_new_address = driver.findElement(By.cssSelector("a:nth-child(3)ul.fancy"));
+        WebElement element_new_address = driver.findElement(By.cssSelector("a[href^=\"addresses\"]"));
         element_new_address.click();
     //    element_new_address.click();
     }
