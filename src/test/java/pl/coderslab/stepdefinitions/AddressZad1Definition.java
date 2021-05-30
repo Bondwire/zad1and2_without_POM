@@ -95,14 +95,13 @@ public class AddressZad1Definition {
         // Prześlij formularz
         elementCode.submit();
 
-        WebElement elementCountry = driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div/div/form/section/div[8]/div[1]/input"));
-        // Wyczyść tekst zapisany w elemencie
-        elementCountry.click();
-        elementCountry.clear();
-        // Wpisz informacje do wyszukania
-        elementCountry.sendKeys(country);
-        // Prześlij formularz
-        elementCountry.submit();
+        WebElement countryLabel = driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div/div/form/section/div[10]/div[1]/select"));
+        WebElement rozwijanyElement = driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div/div/form/section/div[10]/div[1]/select/option[2]"));
+        countryLabel.click();
+        rozwijanyElement.click();
+        //    Select role = new Select(rozwijanyElement);
+        //    role.selectByVisibleText("QA");
+
 
         WebElement elementPhone = driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div/div/form/section/div[11]/div[1]/input"));
         // Wyczyść tekst zapisany w elemencie
