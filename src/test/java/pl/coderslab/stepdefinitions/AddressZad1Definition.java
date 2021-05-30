@@ -120,5 +120,6 @@ public class AddressZad1Definition {
 
     @And("^sprawdzam czy dane sa ok$")
     public void sprawdzamCzyDaneSaOk() {
+
     }
 }
