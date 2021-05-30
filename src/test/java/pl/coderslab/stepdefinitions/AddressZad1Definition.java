@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 
 public class AddressZad1Definition {
     WebDriver driver;
@@ -57,26 +58,23 @@ public class AddressZad1Definition {
             // Wpisz informacje do wyszukania
             elementAlias.sendKeys(alias);
             // Prześlij formularz
-            elementAlias.submit();
 
 
-        WebElement elementcity = driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div/div/form/section/div[8]/div[1]/input"));
+        WebElement elementcity = driver.findElement(By.name("city"));
         // Wyczyść tekst zapisany w elemencie
         elementcity.click();
         elementcity.clear();
         // Wpisz informacje do wyszukania
         elementcity.sendKeys(city);
         // Prześlij formularz
-        elementcity.submit();
 
-        WebElement elementaddress = driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div/div/form/section/div[8]/div[1]/input"));
+        WebElement elementaddress = driver.findElement(By.cssSelector("div.form-group:nth-child(10) > div:nth-child(2) > input:nth-child(1)"));
         // Wyczyść tekst zapisany w elemencie
         elementaddress.click();
         elementaddress.clear();
         // Wpisz informacje do wyszukania
         elementaddress.sendKeys(address);
         // Prześlij formularz
-        elementaddress.submit();
 
         WebElement elementZip_postal = driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div/div/form/section/div[8]/div[1]/input"));
         // Wyczyść tekst zapisany w elemencie
@@ -85,7 +83,6 @@ public class AddressZad1Definition {
         // Wpisz informacje do wyszukania
         elementZip_postal.sendKeys(zip_postal);
         // Prześlij formularz
-        elementZip_postal.submit();
 
         WebElement elementCode = driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div/div/form/section/div[5]/div[1]/input"));
         // Wyczyść tekst zapisany w elemencie
@@ -94,15 +91,24 @@ public class AddressZad1Definition {
         // Wpisz informacje do wyszukania
         elementCode.sendKeys(code);
         // Prześlij formularz
-        elementCode.submit();
 
         WebElement countryLabel = driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div/div/form/section/div[10]/div[1]/select"));
         WebElement rozwijanyElement = driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div/div/form/section/div[10]/div[1]/select/option[2]"));
         countryLabel.click();
-        rozwijanyElement.click();
-        //
-        //    Select role = new Select(rozwijanyElement);
-        //    role.selectByVisibleText("QA");
+        if (rozwijanyElement.isDisplayed()){
+            Select role = new Select(rozwijanyElement);
+            role.selectByValue("17");
+            rozwijanyElement.click();
+        }
+        //       WebElement roleLabel = driver.findElement(By.xpath("//*[@id='infoForm']/div[9]/label"));
+        //        WebElement roleElement = driver.findElement(By.xpath("//*[@id='role']"));
+        //        if (roleElement.isEnabled()) {
+        //            Select role = new Select(roleElement);
+        //            role.selectByVisibleText("QA");
+        //            System.out.println(roleLabel.getText() + ": QA");
+        //        } else {
+        //            Assert.fail();
+        //        }
 
 
         WebElement elementPhone = driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div/div/form/section/div[11]/div[1]/input"));
