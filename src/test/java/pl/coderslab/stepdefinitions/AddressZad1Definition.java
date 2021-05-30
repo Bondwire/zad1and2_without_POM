@@ -99,6 +99,7 @@ public class AddressZad1Definition {
         WebElement rozwijanyElement = driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div/div/form/section/div[10]/div[1]/select/option[2]"));
         countryLabel.click();
         rozwijanyElement.click();
+        //
         //    Select role = new Select(rozwijanyElement);
         //    role.selectByVisibleText("QA");
 
