@@ -47,19 +47,65 @@ public class AddressZad1Definition {
         createNewAddress.click();
     }
 
-    @Then("^wypelniam formularz <alias> <address> <city> <zip/postal> <code> <country> <phone>$")
-    public void wypelniamFormularzAliasAddressCityZipPostalCodeCountryPhone(String alias) {
+    @Then("wypelniam formularz (.*) (.*) (.*) (.*) (.*) (.*) (.*)")
+    public void wypelniamFormularzAliasAddressCityZipPostalCodeCountryPhone(String alias, String address, String city, String zip_postal, String code, String country, String phone ) {
             // Znajdź element wprowadzania tekstu na podstawie jego nazwy
-           WebElement element1 = driver.findElement(By.name("q"));
+           WebElement elementAlias = driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div/div/form/section/div[1]/div[1]/input"));
             // Wyczyść tekst zapisany w elemencie
-           element1.clear();
+            elementAlias.click();
+            elementAlias.clear();
             // Wpisz informacje do wyszukania
-            element1.sendKeys(alias);
+            elementAlias.sendKeys(alias);
             // Prześlij formularz
-            element1.submit();
+            elementAlias.submit();
+
+        WebElement elementaddress = driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div/div/form/section/div[8]/div[1]/input"));
+        // Wyczyść tekst zapisany w elemencie
+        elementaddress.click();
+        elementaddress.clear();
+        // Wpisz informacje do wyszukania
+        elementaddress.sendKeys(address);
+        // Prześlij formularz
+        elementaddress.submit();
+
+        WebElement elementcity = driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div/div/form/section/div[9]/div[1]/input"));
+        // Wyczyść tekst zapisany w elemencie
+        elementcity.click();
+        elementaddress.clear();
+        // Wpisz informacje do wyszukania
+        elementcity.sendKeys(city);
+        // Prześlij formularz
+        elementcity.submit();
+
+        WebElement elementZip_postal = driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div/div/form/section/div[8]/div[1]/input"));
+        // Wyczyść tekst zapisany w elemencie
+        elementZip_postal.click();
+        elementZip_postal.clear();
+        // Wpisz informacje do wyszukania
+        elementZip_postal.sendKeys(zip_postal);
+        // Prześlij formularz
+        elementZip_postal.submit();
+
+        WebElement elementCode = driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div/div/form/section/div[8]/div[1]/input"));
+        // Wyczyść tekst zapisany w elemencie
+        elementCode.click();
+        elementCode.clear();
+        // Wpisz informacje do wyszukania
+        elementCode.sendKeys(code);
+        // Prześlij formularz
+        elementCode.submit();
+
+        WebElement elementCountry = driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div/div/form/section/div[8]/div[1]/input"));
+        // Wyczyść tekst zapisany w elemencie
+        elementCountry.click();
+        elementCountry.clear();
+        // Wpisz informacje do wyszukania
+        elementCountry.sendKeys(country);
+        // Prześlij formularz
+        elementCountry.submit();
     }
 
-    @Then("^sprawdzam czy dane sa ok$")
+    @And("^sprawdzam czy dane sa ok$")
     public void sprawdzamCzyDaneSaOk() {
     }
 }
