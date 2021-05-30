@@ -48,7 +48,15 @@ public class AddressZad1Definition {
     }
 
     @Then("^wypelniam formularz <alias> <address> <city> <zip/postal> <code> <country> <phone>$")
-    public void wypelniamFormularzAliasAddressCityZipPostalCodeCountryPhone() {
+    public void wypelniamFormularzAliasAddressCityZipPostalCodeCountryPhone(String alias) {
+            // Znajdź element wprowadzania tekstu na podstawie jego nazwy
+           WebElement element1 = driver.findElement(By.name("q"));
+            // Wyczyść tekst zapisany w elemencie
+           element1.clear();
+            // Wpisz informacje do wyszukania
+            element1.sendKeys(alias);
+            // Prześlij formularz
+            element1.submit();
     }
 
     @Then("^sprawdzam czy dane sa ok$")
