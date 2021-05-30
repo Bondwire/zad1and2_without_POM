@@ -8,6 +8,6 @@
       And sprawdzam czy dane sa ok
       Examples:
         | alias | address | city | zip_postal | code | country | phone |
-        | grzgorz | Wroclawska | skogen | NN-NNN | 6565 | dania | 55555555 |
+        | grzgorz | Wroclawska | miasto | NN-NNN | NN-NNN | dania | 55555555 |
 
 

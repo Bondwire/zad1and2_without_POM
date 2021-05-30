@@ -59,6 +59,16 @@ public class AddressZad1Definition {
             // Prześlij formularz
             elementAlias.submit();
 
+
+        WebElement elementcity = driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div/div/form/section/div[8]/div[1]/input"));
+        // Wyczyść tekst zapisany w elemencie
+        elementcity.click();
+        elementcity.clear();
+        // Wpisz informacje do wyszukania
+        elementcity.sendKeys(city);
+        // Prześlij formularz
+        elementcity.submit();
+
         WebElement elementaddress = driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div/div/form/section/div[8]/div[1]/input"));
         // Wyczyść tekst zapisany w elemencie
         elementaddress.click();
@@ -67,15 +77,6 @@ public class AddressZad1Definition {
         elementaddress.sendKeys(address);
         // Prześlij formularz
         elementaddress.submit();
-
-        WebElement elementcity = driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div/div/form/section/div[9]/div[1]/input"));
-        // Wyczyść tekst zapisany w elemencie
-        elementcity.click();
-        elementaddress.clear();
-        // Wpisz informacje do wyszukania
-        elementcity.sendKeys(city);
-        // Prześlij formularz
-        elementcity.submit();
 
         WebElement elementZip_postal = driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div/div/form/section/div[8]/div[1]/input"));
         // Wyczyść tekst zapisany w elemencie
