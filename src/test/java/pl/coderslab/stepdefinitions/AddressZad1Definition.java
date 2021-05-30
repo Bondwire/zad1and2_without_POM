@@ -92,13 +92,20 @@ public class AddressZad1Definition {
         elementCode.sendKeys(code);
         // Prześlij formularz
 
+        WebElement elementPhone = driver.findElement(By.name("phone"));
+        // Wyczyść tekst zapisany w elemencie
+        elementPhone.click();
+        elementPhone.clear();
+        // Wpisz informacje do wyszukania
+        elementPhone.sendKeys(phone);
+        // Prześlij formularz
+
         WebElement countryLabel = driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div/div/form/section/div[10]/div[1]/select"));
-        WebElement rozwijanyElement = driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div/div/form/section/div[10]/div[1]/select/option[2]"));
+        WebElement rozwijanyElement = driver.findElement(By.name("id_country"));
         countryLabel.click();
-        if (rozwijanyElement.isDisplayed()){
+        if (rozwijanyElement.isEnabled()){
             Select role = new Select(rozwijanyElement);
             role.selectByValue("17");
-            rozwijanyElement.click();
         }
         //       WebElement roleLabel = driver.findElement(By.xpath("//*[@id='infoForm']/div[9]/label"));
         //        WebElement roleElement = driver.findElement(By.xpath("//*[@id='role']"));
@@ -109,16 +116,6 @@ public class AddressZad1Definition {
         //        } else {
         //            Assert.fail();
         //        }
-
-
-        WebElement elementPhone = driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div/div/form/section/div[11]/div[1]/input"));
-        // Wyczyść tekst zapisany w elemencie
-        elementPhone.click();
-        elementPhone.clear();
-        // Wpisz informacje do wyszukania
-        elementPhone.sendKeys(phone);
-        // Prześlij formularz
-        elementPhone.submit();
     }
 
     @And("^sprawdzam czy dane sa ok$")
