@@ -86,7 +86,7 @@ public class AddressZad1Definition {
         // Prześlij formularz
         elementZip_postal.submit();
 
-        WebElement elementCode = driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div/div/form/section/div[8]/div[1]/input"));
+        WebElement elementCode = driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div/div/form/section/div[5]/div[1]/input"));
         // Wyczyść tekst zapisany w elemencie
         elementCode.click();
         elementCode.clear();
@@ -103,6 +103,15 @@ public class AddressZad1Definition {
         elementCountry.sendKeys(country);
         // Prześlij formularz
         elementCountry.submit();
+
+        WebElement elementPhone = driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div/div/form/section/div[11]/div[1]/input"));
+        // Wyczyść tekst zapisany w elemencie
+        elementPhone.click();
+        elementPhone.clear();
+        // Wpisz informacje do wyszukania
+        elementPhone.sendKeys(phone);
+        // Prześlij formularz
+        elementPhone.submit();
     }
 
     @And("^sprawdzam czy dane sa ok$")
