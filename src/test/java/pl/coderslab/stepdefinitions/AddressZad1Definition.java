@@ -10,6 +10,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.concurrent.TimeUnit;
+
 public class AddressZad1Definition {
     WebDriver driver;
     //wemole5481@geekale.com     mail
@@ -49,7 +51,8 @@ public class AddressZad1Definition {
     }
 
     @Then("wypelniam formularz (.*) (.*) (.*) (.*) (.*) (.*) (.*)")
-    public void wypelniamFormularzAliasAddressCityZipPostalCodeCountryPhone(String alias, String address, String city, String zip_postal, String code, String country, String phone ) {
+    public void wypelniamFormularzAliasAddressCityZipPostalCodeCountryPhone(String alias, String address, String city, String zip_postal, String code, String country, String phone )
+    {
             // Znajdź element wprowadzania tekstu na podstawie jego nazwy
            WebElement elementAlias = driver.findElement(By.xpath("/html/body/main/section/div/div/section/section/div/div/form/section/div[1]/div[1]/input"));
             // Wyczyść tekst zapisany w elemencie
@@ -58,6 +61,7 @@ public class AddressZad1Definition {
             // Wpisz informacje do wyszukania
             elementAlias.sendKeys(alias);
             // Prześlij formularz
+
 
 
         WebElement elementcity = driver.findElement(By.name("city"));
@@ -106,20 +110,119 @@ public class AddressZad1Definition {
         if (rozwijanyElement.isEnabled()){
             Select role = new Select(rozwijanyElement);
             role.selectByValue("17");
+
         }
-        //       WebElement roleLabel = driver.findElement(By.xpath("//*[@id='infoForm']/div[9]/label"));
-        //        WebElement roleElement = driver.findElement(By.xpath("//*[@id='role']"));
-        //        if (roleElement.isEnabled()) {
-        //            Select role = new Select(roleElement);
-        //            role.selectByVisibleText("QA");
-        //            System.out.println(roleLabel.getText() + ": QA");
-        //        } else {
-        //            Assert.fail();
-        //        }
+
+        //driver.findElement(By.xpath("button.btn")).click();
+
     }
 
     @And("^sprawdzam czy dane sa ok$")
     public void sprawdzamCzyDaneSaOk() {
 
+      driver.findElement(By.cssSelector("button.btn")).click();
+
+        WebElement elementAliassprawdz = driver.findElement(By.cssSelector(".address-body > h4:nth-child(1)"));
+        String poleAlias=elementAliassprawdz.getText();
+        System.out.println(poleAlias);
+        if(poleAlias.equals("grzgorz"))
+        {
+            System.out.println("alias zawiera grzegorz z bledem " + poleAlias);
+        }
+        else
+        {
+            System.out.println("alias nie zawiera grzgorz" + poleAlias);
+        }
+
+        WebElement update = driver.findElement(By.cssSelector(".address-footer > a:nth-child(1) > i:nth-child(1)"));
+        update.click();
+
+        WebElement firstnameCheck = driver.findElement(By.cssSelector("div.form-group:nth-child(6) > div:nth-child(2) > input:nth-child(1)"));
+        String imie = firstnameCheck.getAttribute("value");
+        System.out.println(imie);
+        if(imie.equals("Grzegorz"))
+        {
+            System.out.println("pole się zgadza" + imie);
+        }
+        else
+            System.out.println("pole niepoprawne" + imie);
+
+        WebElement addressCheck = driver.findElement(By.cssSelector("div.form-group:nth-child(10) > div:nth-child(2) > input:nth-child(1)"));
+        String mojAdres = addressCheck.getAttribute("value");
+        System.out.println(mojAdres);
+        if(mojAdres.equals("Wroclawska"))
+        {
+            System.out.println("pole się zgadza" + mojAdres);
+        }
+        else
+            System.out.println("pole niepoprawne" + mojAdres);
+
+        WebElement cityCheck = driver.findElement(By.cssSelector("div.form-group:nth-child(12) > div:nth-child(2) > input:nth-child(1)"));
+        String mojeMiasto = cityCheck.getAttribute("value");
+        System.out.println(mojeMiasto);
+        if(mojeMiasto.equals("miasto"))
+        {
+            System.out.println("pole się zgadza" + mojeMiasto);
+        }
+        else
+            System.out.println("pole niepoprawne" + mojeMiasto);
+
+        WebElement postalCheck = driver.findElement(By.cssSelector("div.form-group:nth-child(13) > div:nth-child(2) > input:nth-child(1)"));
+        String mojKOd = postalCheck.getAttribute("value");
+        System.out.println(mojKOd);
+        if(mojKOd.equals("NN-NNN"))
+        {
+            System.out.println("pole się zgadza" + mojKOd);
+        }
+        else
+            System.out.println("pole niepoprawne" + mojKOd);
+
+        WebElement phoneCheck = driver.findElement(By.cssSelector("div.form-group:nth-child(15) > div:nth-child(2) > input:nth-child(1)"));
+        String mojfon = phoneCheck.getAttribute("value");
+        System.out.println(mojfon);
+        if(mojfon.equals("55555555"))
+        {
+            System.out.println("pole się zgadza" + mojfon);
+        }
+        else
+            System.out.println("pole niepoprawne" + mojfon);
+
+        WebElement countryCheck = driver.findElement(By.cssSelector("select.form-control > option:nth-child(2)"));
+        String mojecountry = countryCheck.getText();
+        System.out.println(mojecountry);
+        if(mojecountry.equals("United Kingdom"))
+        {
+            System.out.println("pole się zgadza" + mojecountry);
+        }
+        else
+            System.out.println("pole niepoprawne" + mojecountry);
+
+        driver.findElement(By.cssSelector("button.btn")).click();
+        driver.findElement(By.cssSelector(".address-footer > a:nth-child(2) > span:nth-child(2)")).click();
+/*
+        WebElement elementAliassprawdzDelete = driver.findElement(By.cssSelector(".address-body > h4:nth-child(1)"));
+        String poleAliasdelete=elementAliassprawdzDelete.getText();
+        System.out.println(poleAliasdelete);
+        if(poleAliasdelete.equals("grzgorz"))
+        {
+            System.out.println("pole grzgorz nadal istnieje " + poleAliasdelete);
+        }
+        else
+        {
+            System.out.println("pole grzgorz nie istnieje" + poleAliasdelete);
+        }
+*/
+        WebElement succcesfullyDeleted = driver.findElement(By.cssSelector(".alert > ul:nth-child(1) > li:nth-child(1)"));
+        String kasowanie=succcesfullyDeleted.getText();
+        System.out.println(kasowanie);
+        if(kasowanie.equals("Address successfully deleted!"))
+        {
+            System.out.println("alias grzgorz został skasowany " + kasowanie);
+        }
+        else
+        {
+            System.out.println("pole grzgorz nadal istnieje" + kasowanie);
+        }
+
     }
-}
+    }
