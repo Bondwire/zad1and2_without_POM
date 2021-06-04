@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import java.util.concurrent.TimeUnit;
 
 public class Zad2Definition {
     WebDriver driver;
@@ -57,59 +58,71 @@ public class Zad2Definition {
         rozmiarlista.selectByValue("2");
         rozmiarlista.selectByVisibleText("M");
 
-        // inputText(By.name("dob"), "11/30/1989"); dlaczego to nie działa;
+        // inputText(By.name("dob"), "11/30/1989"); dlaczego to nie działa; - bo to musi być funkcja
         WebElement koszykSztuki = driver.findElement(By.id("quantity_wanted"));
-        koszykSztuki.clear();
         koszykSztuki.click();
-        koszykSztuki.sendKeys("5");
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        koszykSztuki.clear();
+        koszykSztuki.sendKeys("4");
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        WebElement koszykkliksztuki = driver.findElement(By.xpath("//*[@id=\"add-to-cart-or-refresh\"]/div[2]/div/div[1]/div/span[3]/button[1]/i"));
+        koszykkliksztuki.click();
 
-     //   WebElement dokoszyka = driver.findElement(By.xpath("//*[@id=\"add-to-cart-or-refresh\"]/div[2]/div/div[2]/button/i"));
-      //  dokoszyka.click();
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+       WebElement dokoszyka = driver.findElement(By.xpath("//*[@id=\"add-to-cart-or-refresh\"]/div[2]/div/div[2]/button/i"));
+       dokoszyka.click();
 
       //  WebElement potiwerdzkoszyk = driver.findElement(By)
     }
 
     @Then("^dodaje do koszyka$")
     public void dodaje_do_koszyka()  {
-        // Write code here that turns the phrase above into concrete actions
-        WebElement dokoszyka = driver.findElement(By.xpath("//*[@id=\"add-to-cart-or-refresh\"]/div[2]/div/div[2]/button/i"));
+
+        WebElement dokoszyka = driver.findElement(By.xpath("#add-to-cart-or-refresh > div.product-add-to-cart > div > div.add > button"));
         dokoszyka.click();
 
     }
 
     @Then("^przechodze do checkout$")
-    public void przechodze_do_checkout() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    public void przechodze_do_checkout() {
+
     }
 
     @Then("^potwierdzam aadres$")
-    public void potwierdzam_aadres() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    public void potwierdzam_aadres()  {
+
     }
 
     @Then("^wybieram odbiór pick up in store$")
-    public void wybieram_odbiór_pick_up_in_store() throws Throwable {
+    public void wybieram_odbiór_pick_up_in_store()  {
         // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+
     }
 
     @Then("^wybieram Pay by check$")
-    public void wybieram_Pay_by_check() throws Throwable {
+    public void wybieram_Pay_by_check()  {
         // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+
     }
 
     @Then("^klikam w order with obligation to pay$")
-    public void klikam_w_order_with_obligation_to_pay() throws Throwable {
+    public void klikam_w_order_with_obligation_to_pay()  {
         // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+
     }
 
     @Then("^robie screenshot$")
-    public void robie_screenshot() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    public void robie_screenshot()  {
+
+
     }
 }
