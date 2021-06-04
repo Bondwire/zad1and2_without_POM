@@ -135,20 +135,21 @@ public class Zad2Definition {
         WebElement confirmDelivery = driver.findElement(By.name("confirmDeliveryOption"));
         confirmDelivery.click();
 
-        WebElement confirmShipping = driver.findElement(By.xpath("//*[@id=\"js-delivery\"]/button"));
-        confirmShipping.click();
+     //  WebElement confirmShipping = driver.findElement(By.xpath("//*[@id=\"js-delivery\"]/button"));
+       // confirmShipping.click();
 
-        WebElement radioPayment = driver.findElement(By.id("payment-option-1"));
-        //radioPayment.clear();
+        WebElement radioPayment = driver.findElement(By.name("payment-option"));
         radioPayment.click();
 
         WebElement conditions_to_approve =  driver.findElement((By.id("conditions_to_approve[terms-and-conditions]")));
-        //conditions_to_approve.clear();
         conditions_to_approve.click();
 
     }
     @Then("^klikam w order with obligation to pay$")
     public void klikam_w_order_with_obligation_to_pay()  {
+
+        WebElement obligationToPay = driver.findElement(By.xpath("//*[@id=\"payment-confirmation\"]/div[1]/button"));
+        obligationToPay.click();
 
     }
 
