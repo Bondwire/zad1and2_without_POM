@@ -81,6 +81,8 @@ public class KatalonBasicTest {
             element.clear();
             element.sendKeys(text);
 
+
+
             // to mi znajdzie labelkę
             WebElement label = driver.findElement(By.xpath("//label[@for='"+ id +"']"));
             System.out.println(label.getText() + ":" + text);

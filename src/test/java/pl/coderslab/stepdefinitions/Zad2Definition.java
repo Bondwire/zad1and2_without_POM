@@ -14,7 +14,7 @@ public class Zad2Definition {
     WebDriver driver;
 
     @Given("^loguję się na poprzedniego usera$")
-    public void loguję_się_na_poprzedniego_usera() throws Throwable {
+    public void loguję_się_na_poprzedniego_usera()  {
         // Skonfiguruj sterownik przeglądarki
         System.setProperty("webdriver.chrome.driver",
                 "src/main/resources/chromedriver.exe");
@@ -35,6 +35,10 @@ public class Zad2Definition {
         element_password.sendKeys("wemole5481");
         WebElement signInButton = driver.findElement(By.id("submit-login"));
         signInButton.click();
+    }
+
+    @When("^wybieram do zakupu sweter M (\\d+)$")
+    public void wybieram_do_zakupu_sweter_M(int arg1) {
 
         WebElement searchSweter = driver.findElement(By.name("s"));
         searchSweter.click();
@@ -44,20 +48,16 @@ public class Zad2Definition {
         kliksweter.click();
         WebElement klikdoswetra = driver.findElement(By.cssSelector("article.product-miniature:nth-child(1) > div:nth-child(1) > a:nth-child(1) > img:nth-child(1)"));
         klikdoswetra.click();
-        WebElement rozmiarlista = driver.findElement(By.cssSelector("#group_1"));
-        rozmiarlista.click();
-        throw new PendingException();
-    }
-
-    @When("^wybieram do zakupu sweter M (\\d+)$")
-    public void wybieram_do_zakupu_sweter_M(int arg1) throws Throwable {
+        //WebElement rozmiarlista = driver.findElement(By.cssSelector("#group_1"));
+        //rozmiarlista.click();
         // Write code here that turns the phrase above into concrete actions
-        WebElement wybierzM = driver.findElement(By.id("group_1"));
-        wybierzM.click();
-        Select rozmiarlista = new Select(driver.findElement(By.id("group_1")));
+        WebElement wybierzM = driver.findElement(By.name("group[1]"));
+        //wybierzM.click();
+        Select rozmiarlista = new Select(wybierzM);
         rozmiarlista.selectByValue("2");
-      //  rozmiar.selectByVisibleText("M");
-        throw new PendingException();
+        rozmiarlista.selectByVisibleText("M");
+
+
     }
 
     @Then("^dodaje do koszyka$")
