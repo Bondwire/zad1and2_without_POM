@@ -60,19 +60,21 @@ public class Zad2Definition {
         // inputText(By.name("dob"), "11/30/1989"); dlaczego to nie działa;
         WebElement koszykSztuki = driver.findElement(By.id("quantity_wanted"));
         koszykSztuki.clear();
+        koszykSztuki.click();
         koszykSztuki.sendKeys("5");
 
-
-        WebElement dokoszyka = driver.findElement(By.xpath("//*[@id=\"add-to-cart-or-refresh\"]/div[2]/div/div[2]/button/i"));
-        dokoszyka.click();
+     //   WebElement dokoszyka = driver.findElement(By.xpath("//*[@id=\"add-to-cart-or-refresh\"]/div[2]/div/div[2]/button/i"));
+      //  dokoszyka.click();
 
       //  WebElement potiwerdzkoszyk = driver.findElement(By)
     }
 
     @Then("^dodaje do koszyka$")
-    public void dodaje_do_koszyka() throws Throwable {
+    public void dodaje_do_koszyka()  {
         // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        WebElement dokoszyka = driver.findElement(By.xpath("//*[@id=\"add-to-cart-or-refresh\"]/div[2]/div/div[2]/button/i"));
+        dokoszyka.click();
+
     }
 
     @Then("^przechodze do checkout$")
