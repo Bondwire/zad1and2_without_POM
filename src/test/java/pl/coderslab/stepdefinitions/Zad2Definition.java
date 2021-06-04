@@ -73,11 +73,11 @@ public class Zad2Definition {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
         WebElement koszykkliksztuki = driver.findElement(By.xpath("//*[@id=\"add-to-cart-or-refresh\"]/div[2]/div/div[1]/div/span[3]/button[1]/i"));
         koszykkliksztuki.click();
 
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
        WebElement dokoszyka = driver.findElement(By.xpath("//*[@id=\"add-to-cart-or-refresh\"]/div[2]/div/div[2]/button/i"));
        dokoszyka.click();
 
@@ -87,37 +87,57 @@ public class Zad2Definition {
     @Then("^dodaje do koszyka$")
     public void dodaje_do_koszyka()  {
 
-        WebElement dokoszyka = driver.findElement(By.xpath("#add-to-cart-or-refresh > div.product-add-to-cart > div > div.add > button"));
-        dokoszyka.click();
+     //   WebElement dokoszyka = driver.findElement(By.xpath("#add-to-cart-or-refresh > div.product-add-to-cart > div > div.add > button"));
+     //   dokoszyka.click();
 
     }
 
     @Then("^przechodze do checkout$")
     public void przechodze_do_checkout() {
+        WebElement checkout = driver.findElement(By.xpath("//*[@id=\"blockcart-modal\"]/div/div/div[2]/div/div[2]/div/div/a"));
+        checkout.click();
 
+        WebElement proceedToCheckout = driver.findElement((By.xpath("//*[@id=\"main\"]/div/div[2]/div[1]/div[2]/div/a")));
+        proceedToCheckout.click();
     }
 
     @Then("^potwierdzam aadres$")
     public void potwierdzam_aadres()  {
+        WebElement address = driver.findElement(By.name("address1"));
+        address.clear();
+        address.sendKeys("Wroclawska 133");
+        WebElement city = driver.findElement(By.name("city"));
+        city.clear();
+        city.sendKeys("Wroclaw");
+        WebElement kodPocztowy = driver.findElement(By.name("postcode"));
+        kodPocztowy.clear();
+        kodPocztowy.sendKeys("55-255");
+
+        WebElement countryLabel2 = driver.findElement(By.xpath("//*[@id=\"delivery-address\"]/div/section/div[9]/div[1]/select"));
+        WebElement rozwijanyElement2 = driver.findElement(By.name("id_country"));
+        countryLabel2.click();
+        if (rozwijanyElement2.isEnabled()){
+            Select role = new Select(rozwijanyElement2);
+            role.selectByValue("17");
+
+        }
 
     }
 
     @Then("^wybieram odbiór pick up in store$")
     public void wybieram_odbiór_pick_up_in_store()  {
-        // Write code here that turns the phrase above into concrete actions
-
+        WebElement continueAddress = driver.findElement(By.xpath("//*[@id=\"checkout-addresses-step\"]/div/div/form/footer/button"));
+        continueAddress.click();
     }
-
     @Then("^wybieram Pay by check$")
     public void wybieram_Pay_by_check()  {
-        // Write code here that turns the phrase above into concrete actions
-
+        WebElement confirmDelivery = driver.findElement(By.name("confirmDeliveryOption"));
+        confirmDelivery.click();
     }
-
     @Then("^klikam w order with obligation to pay$")
     public void klikam_w_order_with_obligation_to_pay()  {
-        // Write code here that turns the phrase above into concrete actions
-
+        WebElement confirmAddress = driver.findElement(By.xpath("//*[@id=\"js-delivery\"]/button"));
+        confirmAddress.click();
     }
 
     @Then("^robie screenshot$")
