@@ -57,7 +57,16 @@ public class Zad2Definition {
         rozmiarlista.selectByValue("2");
         rozmiarlista.selectByVisibleText("M");
 
+        // inputText(By.name("dob"), "11/30/1989"); dlaczego to nie działa;
+        WebElement koszykSztuki = driver.findElement(By.id("quantity_wanted"));
+        koszykSztuki.clear();
+        koszykSztuki.sendKeys("5");
 
+
+        WebElement dokoszyka = driver.findElement(By.xpath("//*[@id=\"add-to-cart-or-refresh\"]/div[2]/div/div[2]/button/i"));
+        dokoszyka.click();
+
+      //  WebElement potiwerdzkoszyk = driver.findElement(By)
     }
 
     @Then("^dodaje do koszyka$")
