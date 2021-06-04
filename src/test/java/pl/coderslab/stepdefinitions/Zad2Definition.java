@@ -4,6 +4,7 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import cucumber.api.java.eo.Se;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -133,11 +134,22 @@ public class Zad2Definition {
     public void wybieram_Pay_by_check()  {
         WebElement confirmDelivery = driver.findElement(By.name("confirmDeliveryOption"));
         confirmDelivery.click();
+
+        WebElement confirmShipping = driver.findElement(By.xpath("//*[@id=\"js-delivery\"]/button"));
+        confirmShipping.click();
+
+        WebElement radioPayment = driver.findElement(By.id("payment-option-1"));
+        //radioPayment.clear();
+        radioPayment.click();
+
+        WebElement conditions_to_approve =  driver.findElement((By.id("conditions_to_approve[terms-and-conditions]")));
+        //conditions_to_approve.clear();
+        conditions_to_approve.click();
+
     }
     @Then("^klikam w order with obligation to pay$")
     public void klikam_w_order_with_obligation_to_pay()  {
-        WebElement confirmAddress = driver.findElement(By.xpath("//*[@id=\"js-delivery\"]/button"));
-        confirmAddress.click();
+
     }
 
     @Then("^robie screenshot$")
