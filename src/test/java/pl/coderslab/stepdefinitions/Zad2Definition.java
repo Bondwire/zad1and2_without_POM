@@ -10,6 +10,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import pages.LoginPage;
+
 import java.util.concurrent.TimeUnit;
 
 public class Zad2Definition {
@@ -27,6 +29,10 @@ public class Zad2Definition {
         // Przejdź do Google
         driver.get("https://prod-kurs.coderslab.pl/index.php?controller=authentication&back=my-account");
 
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.loginAs("wemole5481@geekale.com","wemole5481");
+
+        /*
         WebElement element_email = driver.findElement(By.name("email"));
         element_email.click();
         element_email.clear();
@@ -37,6 +43,7 @@ public class Zad2Definition {
         element_password.sendKeys("wemole5481");
         WebElement signInButton = driver.findElement(By.id("submit-login"));
         signInButton.click();
+        */
     }
 
     @When("^wybieram do zakupu sweter M (\\d+)$")
