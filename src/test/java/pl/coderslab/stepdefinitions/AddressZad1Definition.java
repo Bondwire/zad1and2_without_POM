@@ -4,6 +4,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -125,7 +126,8 @@ public class AddressZad1Definition {
         WebElement elementAliassprawdz = driver.findElement(By.cssSelector(".address-body > h4:nth-child(1)"));
         String poleAlias=elementAliassprawdz.getText();
         System.out.println(poleAlias);
-        if(poleAlias.equals("grzgorz"))
+        Assert.assertEquals("grzgorz",poleAlias);
+       /* if(poleAlias.equals("grzgorz"))
         {
             System.out.println("alias zawiera grzegorz z bledem " + poleAlias);
         }
@@ -133,7 +135,7 @@ public class AddressZad1Definition {
         {
             System.out.println("alias nie zawiera grzgorz" + poleAlias);
         }
-
+*/
         WebElement update = driver.findElement(By.cssSelector(".address-footer > a:nth-child(1) > i:nth-child(1)"));
         update.click();
 
